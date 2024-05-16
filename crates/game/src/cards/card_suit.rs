@@ -45,8 +45,8 @@ impl CardSuit {
 
     pub fn color(&self) -> Color {
         match self {
-            Self::Hearts | Self::Diamonds => Color::from_rgba(255, 0, 0, 255),
-            Self::Clubs | Self::Spades => Color::from_rgba(0, 0, 0, 255),
+            Self::Hearts | Self::Diamonds => RED,
+            Self::Clubs | Self::Spades => BLACK,
         }
     }
 

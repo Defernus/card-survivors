@@ -10,6 +10,7 @@ async fn main() {
         clear_background(WHITE);
 
         game.draw_state(&assets);
+        game.update_state();
 
         next_frame().await
     }

@@ -1,11 +1,11 @@
 use crate::*;
-use macroquad::window::screen_height;
+use macroquad::prelude::*;
 
 pub const CARDS_TO_DISPLAY: usize = 5;
 
 pub struct GameState {
-    pub current_deck: CardDeck,
-    pub drawn_cards: Vec<Card>,
+    current_deck: CardDeck,
+    drawn_cards: Vec<Card>,
 }
 
 impl GameState {
@@ -20,7 +20,17 @@ impl GameState {
         }
     }
 
-    pub fn update_state(&mut self) {}
+    pub fn update_state(&mut self) {
+        if is_key_pressed(KeyCode::Space) {
+            if let Some(card) = self.current_deck.next() {
+                self.drawn_cards.push(card);
+            } else {
+                self.current_deck = CardDeck::default();
+                self.drawn_cards.clear();
+                self.drawn_cards.push(self.current_deck.next().unwrap());
+            }
+        }
+    }
 
     pub fn draw_state(&mut self, assets: &GameAssets) {
         for (index, card) in self

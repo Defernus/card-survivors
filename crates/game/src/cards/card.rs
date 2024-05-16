@@ -26,6 +26,7 @@ impl Card {
 
     pub fn draw(self, assets: &GameAssets, x: f32, y: f32) {
         let color = self.suit.color();
+        draw_rectangle(x, y, Self::WIDTH, Self::HEIGHT, WHITE);
         draw_rectangle_lines(x, y, Self::WIDTH, Self::HEIGHT, 10.0, color);
 
         self.suit.draw(assets, x, y);
