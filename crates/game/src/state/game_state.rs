@@ -47,7 +47,9 @@ impl GameState {
         }
 
         self.handle_update_bet();
-        self.handle_next_card();
+        if self.bet > 0 {
+            self.handle_next_card();
+        }
     }
 
     fn handle_update_bet(&mut self) {
